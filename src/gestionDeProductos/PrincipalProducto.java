@@ -27,7 +27,7 @@ public class PrincipalProducto implements Serializable {
                     seleccionarTienda(listadoTiendas);
                     break;
                 case 0:
-                    guardarProducto(listadoTiendas);
+                    guardarTiendas(listadoTiendas);
                     salir = true;
                     break;
             }
@@ -98,7 +98,7 @@ public class PrincipalProducto implements Serializable {
             return sc.nextLine();
         }
 
-        public static void guardarProducto(Map<String, List<Producto>> listadoTiendas) {
+        public static void guardarTiendas(Map<String, List<Producto>> listadoTiendas) {
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("producto.dat"))) {
                 oos.writeObject(listadoTiendas);
                 System.out.println("Productos guardados con éxito.");
