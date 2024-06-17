@@ -6,7 +6,7 @@ import java.util.*;
 public class PrincipalProducto implements Serializable {
     private final static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         final Map<String, List<Producto>> listadoTiendas = new TreeMap<>();
 
         cargarTiendas(listadoTiendas);
@@ -98,22 +98,22 @@ public class PrincipalProducto implements Serializable {
             return sc.nextLine();
         }
 
-        public static void guardarTiendas(Map<String, List<Producto>> listadoTiendas) throws IOException {
+        public static void guardarTiendas(Map<String, List<Producto>> listadoTiendas){
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("producto.dat"))) {
                 oos.writeObject(listadoTiendas);
                 System.out.println("Productos guardados con éxito.");
             } catch (IOException e) {
-                throw new IOException("Error al guardar");
+                System.out.println("Error al guardar");
             }
         }
 
-        public static void cargarTiendas(Map<String, List<Producto>> listadoTiendas) throws IOException {
+        public static void cargarTiendas(Map<String, List<Producto>> listadoTiendas){
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Producto.dat"))) {
                 Map<String, List<Producto>> tiendasCargadas = (Map<String, List<Producto>>) ois.readObject();
                 listadoTiendas.putAll(tiendasCargadas);
                 System.out.println("Productos cargados con éxito.");
             } catch (IOException | ClassNotFoundException e) {
-                throw new IOException("Error al guardar");
+                System.out.println("Error al cargar");
             }
         }
 

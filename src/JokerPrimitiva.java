@@ -39,7 +39,7 @@ public class JokerPrimitiva {
             }
 
         } catch (IOException e) {
-            throw new NullPointerException("Error al leer el archivo, el archivo no existe");
+            throw new NullPointerException("Error al leer el archivo, el archivo no existe. " + e);
         }
     }
 }
